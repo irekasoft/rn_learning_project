@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import { View, Text, SafeAreaView } from 'react-native'
+import { View, Text, SafeAreaView, ScrollView } from 'react-native'
+
+import BarButton from '../components/BarButton'
 
 class HomeScreen extends Component {
    render() {
@@ -11,56 +13,54 @@ class HomeScreen extends Component {
                flexDirection:'column',
                justifyContent:'center',
                backgroundColor:'#C4C4C4'
-             }}>           
-
-               {/* Top View */}
-               <View style={{                   
-                   backgroundColor:"#3C6CE8",
-                   height: 60,
-               }}>
-               <Text
-                style={{
-                  fontSize:24
-                }}
-               >1</Text>
-               </View>
+             }}>                          
 
               {/* Content Below */}
-               <View style={{
+               <ScrollView style={{
                    flex:1,
                    backgroundColor:"#E0E0E0"
                }}>
-                <Text
-                    style={{
-                    fontSize:60
+
+                <View
+                    style={{height:30}}
+                ></View>
+                
+                <BarButton
+                    onPress={()=>{
+                      //console.log('')
+
+                      this.props.navigation.navigate('SecondScreen');
+
+
                     }}
-                >2</Text> 
-                <Text
-                    style={{
-                    fontSize:60
+                    title="Hello"
+                    secondaryTitle="ABC"
+                />
+                <BarButton
+                    onPress={()=>{
+                      console.log('')
                     }}
-                >2</Text> 
-                <Text
-                    style={{
-                    fontSize:60
+                    title="Hello"
+                />
+                <BarButton
+                    onPress={()=>{
+                      console.log('')
                     }}
-                >2</Text> 
-                <Text
-                    style={{
-                    fontSize:60
+                    title="Hello"
+                />
+                <BarButton
+                    onPress={()=>{
+                      console.log('')
                     }}
-                >2</Text> 
-                <Text
-                    style={{
-                    fontSize:60
-                    }}
-                >2</Text> 
-               </View>
+                    title="Hello"
+                />
+
+               </ScrollView>
 
 
            </View>
-           <View>
-            <Text>AAA</Text>
+           <View style={{padding:3}}>
+            <Text style={{textAlign:"center"}}>App</Text>
            </View>
            </React.Fragment>
        );
