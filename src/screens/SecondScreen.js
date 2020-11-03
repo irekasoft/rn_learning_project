@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 import { 
     
     View, Text, Dimensions, SafeAreaView,
@@ -11,9 +12,31 @@ import {
 
 } from 'react-native'
 
+
+import BarButton from '../components/BarButton';
+
 const WIDTH = Dimensions.get('window').width;
 
 import Styles from '../styles/Styles'
+
+const rows = [
+    {
+      title:'Apa',
+      subtitle:'B'
+    },
+    {
+      title:'Apa',
+      subtitle:'B'
+    },
+    {
+      title:'Apa',
+      subtitle:'B'
+    },
+    {
+      title:'Apa',
+      subtitle:'B'
+    }
+]
 
 class SecondScreen extends Component {
 
@@ -28,63 +51,73 @@ class SecondScreen extends Component {
   }
 
 
-   render() {
+  render() {
        return (           
         <SafeAreaView style={Styles.container}>
 
-            <ScrollView style={{width:"100%"}}>
-               
-            <Text style={{fontSize:50}}>W: {WIDTH} pts</Text>
+          <ScrollView style={{width:"100%", padding: 12}}>
+              
+          <Text style={{fontSize:50}}>W: {WIDTH} pts</Text>
 
-            {/* <TextInput
-              value={this.state.url}
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-            /> */}
+          {
+            rows.map((item, idx)=>{
+
+              return (
+                <BarButton 
+                  secondaryTitle="2"
+                  title="Hello" 
+                  onPress={()=>{
+                    console.log('at second screen');
+                  }}          
+                />
+              )
+              
+            })
+          }
+
+          
+          
+
+          
+
+          <View style={{height:30}}></View>
 
 
-            <TouchableOpacity
-                onPress={()=>{
-                    console.log('hello ')
-                }}
-            >
-              <Text>aSecondScreen</Text>
-              <Image 
-                style={{width:100,height:100, margin:12,borderRadius:12}}
-                source={require('../img/download.jpg')}/>
-            </TouchableOpacity>
+          {/* <TextInput
+            value={this.state.url}
+            style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+          /> */}
 
-            <Switch
-                trackColor={{ false: "#767577", true: "#81b0ff" }}
-                thumbColor={true }
-                ios_backgroundColor="#3e3e3e"
-                value={true}
+          
+
+          {/* <Switch
+              trackColor={{ false: "#767577", true: "#81b0ff" }}
+              thumbColor={true }
+              ios_backgroundColor="#3e3e3e"
+              value={true}
+          /> */}
+
+        
+
+          <Image
+              style={{width:200,height:200}}             
+              source={{uri:'https://i0.wp.com/css-tricks.com/wp-content/uploads/2020/06/43150-1.jpg?resize=1000%2C1000&ssl=1'}} 
+            />
+          
+          <Image
+              style={{width:200,height:200}}             
+              source={{uri:'https://i0.wp.com/css-tricks.com/wp-content/uploads/2020/06/43150-1.jpg?resize=1000%2C1000&ssl=1'}} 
             />
 
-            <Button
-                title="Learn"
-                color="#841584"
-                accessibilityLabel="Learn more about this purple button"
-                />
-
-            <Image
-               style={{width:200,height:200}}             
-               source={{uri:'https://i0.wp.com/css-tricks.com/wp-content/uploads/2020/06/43150-1.jpg?resize=1000%2C1000&ssl=1'}} 
-             />
-            
-            <Image
-               style={{width:200,height:200}}             
-               source={{uri:'https://i0.wp.com/css-tricks.com/wp-content/uploads/2020/06/43150-1.jpg?resize=1000%2C1000&ssl=1'}} 
-             />
-
-            <Image
-               style={{width:200,height:200}}             
-               source={{uri:'https://i0.wp.com/css-tricks.com/wp-content/uploads/2020/06/43150-1.jpg?resize=1000%2C1000&ssl=1'}} 
-             />
-            
-            </ScrollView>
+          <Image
+              style={{width:200,height:200}}             
+              source={{uri:'https://i0.wp.com/css-tricks.com/wp-content/uploads/2020/06/43150-1.jpg?resize=1000%2C1000&ssl=1'}} 
+            />
+          
+          </ScrollView>
                
         </SafeAreaView>           
-       );
+      );
    }
 }
 
