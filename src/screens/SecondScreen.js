@@ -72,7 +72,7 @@ class SecondScreen extends Component {
 
           <ScrollView style={{width:"100%", padding: 12}}>
               
-          <Text style={{fontSize:50}}>W: {WIDTH} pts</Text>
+          <Text style={{fontSize:50}}>{this.props.route.params.name}</Text>
 
           {
             this.state.rows.map((item, idx)=>{

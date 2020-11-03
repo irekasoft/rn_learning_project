@@ -3,6 +3,25 @@ import { View, Text, SafeAreaView, ScrollView } from 'react-native'
 
 import BarButton from '../components/BarButton'
 
+const rows = [
+    {
+      title:'Apa',
+      subtitle:'A'
+    },
+    {
+      title:'Awesome',
+      subtitle:'B'
+    },
+    {
+      title:'Hello',
+      subtitle:'C'
+    },
+    {
+      title:'Apa',
+      subtitle:'D'
+    }
+]
+
 class HomeScreen extends Component {
    render() {
        return (           
@@ -24,36 +43,30 @@ class HomeScreen extends Component {
                 <View
                     style={{height:30}}
                 ></View>
+
+                {
+                    rows.map((item, idx)=>{
+
+                        return (
+                            <BarButton
+                                onPress={()=>{
+                                //console.log('')
+
+                                this.props.navigation.navigate('SecondScreen',{
+                                    name:item.title + ' ' + idx,
+                                    location: 'Ampangan',
+                                });
+
+                                }}
+                                title={item.title}
+                                secondaryTitle="ABC"
+                            />
+                        )
+
+                    })
+                }
                 
-                <BarButton
-                    onPress={()=>{
-                      //console.log('')
-
-                      this.props.navigation.navigate('SecondScreen');
-
-
-                    }}
-                    title="Hello"
-                    secondaryTitle="ABC"
-                />
-                <BarButton
-                    onPress={()=>{
-                      console.log('')
-                    }}
-                    title="Hello"
-                />
-                <BarButton
-                    onPress={()=>{
-                      console.log('')
-                    }}
-                    title="Hello"
-                />
-                <BarButton
-                    onPress={()=>{
-                      console.log('')
-                    }}
-                    title="Hello"
-                />
+                
 
                </ScrollView>
 
