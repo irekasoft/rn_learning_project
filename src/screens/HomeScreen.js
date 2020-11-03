@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import { View, Text, SafeAreaView, ScrollView } from 'react-native'
+import { View, Text, SafeAreaView, ScrollView, TextInput, 
+
+    TouchableOpacity } from 'react-native'
 
 import BarButton from '../components/BarButton'
 
@@ -23,6 +25,17 @@ const rows = [
 ]
 
 class HomeScreen extends Component {
+  
+   constructor(props){
+       super(props);
+
+       this.state = {
+         name: '',
+       }
+
+   }
+
+
    render() {
        return (           
            <React.Fragment>
@@ -40,6 +53,34 @@ class HomeScreen extends Component {
                    backgroundColor:"#E0E0E0"
                }}>
 
+               <View style={{height:30}}></View>
+
+
+               <TextInput
+                placeholder="Enter your name"
+                style={{ backgroundColor:"white", padding:12 }}
+                value={this.state.name}
+                onChangeText={(text)=>{
+                    this.setState({
+                        name: text
+                    })
+                }}
+               />
+
+                <View
+                    style={{height:12}}
+                ></View>
+
+                <TouchableOpacity 
+                activeOpacity={0.8}
+                style={{justifyContent:"center", backgroundColor:"#2D2AD9", alignItems:"center", padding:6, margin:6, borderRadius:12}}>
+
+                <Text style={{color:'white'}}>Login</Text>
+
+                </TouchableOpacity>
+
+               
+
                 <View
                     style={{height:30}}
                 ></View>
@@ -49,6 +90,7 @@ class HomeScreen extends Component {
 
                         return (
                             <BarButton
+                                key={idx}
                                 onPress={()=>{
                                 //console.log('')
 
