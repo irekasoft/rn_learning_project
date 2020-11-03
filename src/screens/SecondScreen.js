@@ -22,19 +22,19 @@ import Styles from '../styles/Styles'
 const rows = [
     {
       title:'Apa',
+      subtitle:'A'
+    },
+    {
+      title:'Awesome',
       subtitle:'B'
     },
     {
-      title:'Apa',
-      subtitle:'B'
+      title:'Hello',
+      subtitle:'C'
     },
     {
       title:'Apa',
-      subtitle:'B'
-    },
-    {
-      title:'Apa',
-      subtitle:'B'
+      subtitle:'D'
     }
 ]
 
@@ -64,8 +64,8 @@ class SecondScreen extends Component {
 
               return (
                 <BarButton 
-                  secondaryTitle="2"
-                  title="Hello" 
+                  title={item.title}
+                  secondaryTitle={item.subtitle}                   
                   onPress={()=>{
                     console.log('at second screen');
                   }}          
