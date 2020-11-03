@@ -3,14 +3,9 @@ export default  {
     container: {
         backgroundColor:'skyblue',
         flex:1,
-
-        flexDirection: 'row',
-
-        justifyContent:'space-around',
+        flexDirection: 'column',
         alignItems:'baseline',
-
-
-
+        padding:12,
     }
 
 }
