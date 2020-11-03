@@ -8,7 +8,9 @@ import {
     Button,
     Switch,
     ScrollView,
-    TextInput
+    TextInput,
+
+    FlatList,
 
 } from 'react-native'
 
@@ -46,7 +48,20 @@ class SecondScreen extends Component {
 
     this.state= {
         url: 'https://google.com',
+        rows: [],
     }
+
+  }
+
+  componentDidMount(){
+
+    // Call API 
+
+    this.setState({
+      
+      rows: rows,
+
+    })
 
   }
 
@@ -60,7 +75,7 @@ class SecondScreen extends Component {
           <Text style={{fontSize:50}}>W: {WIDTH} pts</Text>
 
           {
-            rows.map((item, idx)=>{
+            this.state.rows.map((item, idx)=>{
 
               return (
                 <BarButton 
@@ -104,15 +119,6 @@ class SecondScreen extends Component {
               source={{uri:'https://i0.wp.com/css-tricks.com/wp-content/uploads/2020/06/43150-1.jpg?resize=1000%2C1000&ssl=1'}} 
             />
           
-          <Image
-              style={{width:200,height:200}}             
-              source={{uri:'https://i0.wp.com/css-tricks.com/wp-content/uploads/2020/06/43150-1.jpg?resize=1000%2C1000&ssl=1'}} 
-            />
-
-          <Image
-              style={{width:200,height:200}}             
-              source={{uri:'https://i0.wp.com/css-tricks.com/wp-content/uploads/2020/06/43150-1.jpg?resize=1000%2C1000&ssl=1'}} 
-            />
           
           </ScrollView>
                
