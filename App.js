@@ -19,7 +19,10 @@ function App() {
     // <SecondScreen/>
 
     <NavigationContainer>
-      <Stack.Navigator>        
+      <Stack.Navigator 
+        initialRouteName="HomeScreen" // Prod: HomeScreen
+        
+      >        
 
         <Stack.Screen name="HomeScreen">
           {props => <HomeScreen {...props} />}

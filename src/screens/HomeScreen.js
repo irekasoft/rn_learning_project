@@ -57,6 +57,11 @@ class HomeScreen extends Component {
                                     location: 'Ampangan',
                                 });
 
+                                // this.props.navigation.push('SecondScreen',{
+                                //     name:item.title + ' ' + idx,
+                                //     location: 'Ampangan',
+                                // });
+
                                 }}
                                 title={item.title}
                                 secondaryTitle="ABC"

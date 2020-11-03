@@ -67,12 +67,21 @@ class SecondScreen extends Component {
 
 
   render() {
+
+    
+
+
        return (           
         <SafeAreaView style={Styles.container}>
 
           <ScrollView style={{width:"100%", padding: 12}}>
+
+          {
+            this.props.route.params !== undefined && 
+            <Text style={{fontSize:50}}>{this.props.route.params.name}</Text>
+          }
               
-          <Text style={{fontSize:50}}>{this.props.route.params.name}</Text>
+          
 
           {
             this.state.rows.map((item, idx)=>{
@@ -82,7 +91,9 @@ class SecondScreen extends Component {
                   title={item.title}
                   secondaryTitle={item.subtitle}                   
                   onPress={()=>{
-                    console.log('at second screen');
+
+                    this.props.navigation.push('HomeScreen');                    
+                    
                   }}          
                 />
               )
