@@ -9,7 +9,7 @@ import HomeScreen from './src/screens/HomeScreen';
 import SecondScreen from './src/screens/SecondScreen';
 import StaffScreen from './src/screens/StaffScreen';
 import StaffDetailScreen from './src/screens/StaffDetailScreen';
-
+import StaffAddEditScreen from './src/screens/StaffAddEditScreen';
 
 const Stack = createStackNavigator();
 
@@ -31,6 +31,10 @@ function App() {
 
         <Stack.Screen name="StaffDetailScreen">
           {props => <StaffDetailScreen {...props} />}
+        </Stack.Screen>
+
+        <Stack.Screen name="StaffAddEditScreen">
+          {props => <StaffAddEditScreen {...props} />}
         </Stack.Screen>
 
         <Stack.Screen name="HomeScreen">

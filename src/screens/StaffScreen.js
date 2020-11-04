@@ -1,11 +1,25 @@
 import React, { Component } from 'react'
-import { View, Text, ActivityIndicator } from 'react-native'
+import { View, Text, ActivityIndicator, FlatList } from 'react-native'
 
 import axios from 'axios'
 
 import BarButton from '../components/BarButton'
+import MyButton from '../components/MyButton'
 
 class StaffScreen extends Component {
+
+    static options = ({navigation}) => ({
+        headerRight: ()=> (
+            <View>
+            <Text>Hello</Text>
+            </View>
+        ),
+        headerTitle: (
+            <View>
+              
+            </View>
+        )
+    })
 
     constructor(props){
         
@@ -49,14 +63,24 @@ class StaffScreen extends Component {
             
             {
                 this.state.loading === true && 
-                <View style={{flexDirection:'row', flex:1, justifyContent:'center', padding:6}}>
+                <View style={{flexDirection:'row', flex:1, justifyContent:'center', padding:6, margin:12, alignItems:'center'}}>
                 <ActivityIndicator/>
                 <View style={{width:5}}></View>
                 <Text>Loading</Text>
                 </View>    
-            }            
+            }   
 
-            {
+            <MyButton title="Add Staff"/>
+
+
+            <FlatList
+                data={this.state.staff_list}
+                renderItem={({item, index}) => this.renderItem(item, index) }
+            />
+
+            
+            {/* Contoh guna map */}
+            {/* {
                 this.state.staff_list.map((staff, idx)=>{
                     return (
                         <BarButton
@@ -64,17 +88,30 @@ class StaffScreen extends Component {
                             title={staff.name}
                             secondaryTitle={staff.phone}
                             onPress={()=>{
-                                this.props.navigation.push('StaffDetailScreen');
+                                this.props.navigation.push('StaffDetailScreen',staff);
                             }}
                         />
                     )
                 })
-            }
+            } */}
 
             </View>
         )
 
     }
+
+    renderItem(item, index){
+        return (
+            <BarButton                
+                title={item.name}
+                secondaryTitle={item.phone}
+                onPress={()=>{
+                    this.props.navigation.push('StaffDetailScreen',item);
+                }}
+            />
+        )
+    }
+    
 
 }
 
