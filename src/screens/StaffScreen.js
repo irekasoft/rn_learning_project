@@ -45,7 +45,9 @@ class StaffScreen extends Component {
 
     componentDidMount(){
 
-    
+      this.subs = [
+          this.props.navigation.addListener('didFocus', ()=> { this.callAPI() })
+      ]
 
       this.callAPI();        
 

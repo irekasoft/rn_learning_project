@@ -20,6 +20,9 @@ class StaffAddEditScreen extends Component {
         phone_no: phone,
         email: email,
         gender: gender,
+
+        passkey: passkey,
+        
     }
 
   }
@@ -104,7 +107,7 @@ class StaffAddEditScreen extends Component {
 
    renderButton(){
 
-    let { name, phone_no, email, gender } = this.state;
+    let { name, phone_no, email, gender, passkey } = this.state;
 
     return (
         <MyButton
@@ -140,6 +143,7 @@ class StaffAddEditScreen extends Component {
             bodyFormData.append('gender', gender );
             bodyFormData.append('photo', 'photo');
             bodyFormData.append('coordinate', '123,123');
+            bodyFormData.append('passkey', passkey);
 
             console.log('bodyform', bodyFormData);
 

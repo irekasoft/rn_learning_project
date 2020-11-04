@@ -19,7 +19,7 @@ class StaffDetailScreen extends Component {
 
     render(){
 
-        let { name, email, gender, id, passkey, phone, status, coordinate } = this.props.route.params;
+        let { name, email, gender, id, passkey, phone, status, coordinate,  } = this.props.route.params;
 
         return (
 
@@ -28,6 +28,11 @@ class StaffDetailScreen extends Component {
             <InfoField 
                 title="ID"
                 value={id}
+            />
+
+            <InfoField 
+                title="passkey"
+                value={passkey}
             />
 
             <InfoField 
