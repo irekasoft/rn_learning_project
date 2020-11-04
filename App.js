@@ -1,13 +1,14 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
-import HomeScreen from './src/screens/HomeScreen';
-import SecondScreen from './src/screens/SecondScreen';
+
 
 import { createStackNavigator } from '@react-navigation/stack';
-
 import { NavigationContainer } from '@react-navigation/native';
 
+import HomeScreen from './src/screens/HomeScreen';
+import SecondScreen from './src/screens/SecondScreen';
+import StaffScreen from './src/screens/StaffScreen';
+import StaffDetailScreen from './src/screens/StaffDetailScreen';
 
 
 const Stack = createStackNavigator();
@@ -20,9 +21,17 @@ function App() {
 
     <NavigationContainer>
       <Stack.Navigator 
-        initialRouteName="HomeScreen" // Prod: HomeScreen
+        initialRouteName="StaffScreen" // Prod: HomeScreen
         
       >        
+
+        <Stack.Screen name="StaffScreen">
+          {props => <StaffScreen {...props} />}
+        </Stack.Screen>
+
+        <Stack.Screen name="StaffDetailScreen">
+          {props => <StaffDetailScreen {...props} />}
+        </Stack.Screen>
 
         <Stack.Screen name="HomeScreen">
           {props => <HomeScreen {...props} />}
