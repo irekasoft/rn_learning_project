@@ -157,6 +157,7 @@ class StaffAddEditScreen extends Component {
                 
                     //handle success
                     console.log('response',response);
+                    this.props.navigation.pop();
                     
                 
                 })

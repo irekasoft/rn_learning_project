@@ -4,36 +4,67 @@ import { View, Text, ScrollView } from 'react-native'
 
 import InfoField from '../components/InfoField'
 
-import MyButton from '../components/MyButton'
+import MyButton from '../components/MyButton' 
+
+import axios from 'axios'
 
 class StaffDetailScreen extends Component {
 
     constructor(props){
         super(props);
 
+        this.state = {
+            passkey: props.route.params.passkey,
+        }
+
     }
 
     componentDidMount(){
+      
+      this.subs = [
+        this.props.navigation.addListener('focus', ()=> { this.callAPI() })
+      ]  
+      
+      this.callAPI();
+
+    }
+
+    callAPI(){
+
+        axios.get('http://backend.sofebiz.com/superadmin/view/' + this.state.passkey).then((response)=>{
+            console.log('response', response.data.message);
+
+            let data = response.data.message;
+
+            this.setState({
+
+              name: data.name, 
+              email: data.email, 
+              gender: data.gender, 
+              phone: data.phone, 
+              status: data.status, 
+              coordinate: data.coordinate,
+
+            })
+
+
+        }).catch((e)=>{
+            console.log('response', e);
+        })
 
     }
 
     render(){
 
-        let { name, email, gender, id, passkey, phone, status, coordinate,  } = this.props.route.params;
+        // let { name, email, gender, id, passkey, phone, status, coordinate,  } = this.props.route.params;
+
+        let { name, email, gender, id, passkey, phone, status, coordinate,  } = this.state;
 
         return (
 
             <ScrollView style={{padding:12}}>
             
-            <InfoField 
-                title="ID"
-                value={id}
-            />
-
-            <InfoField 
-                title="passkey"
-                value={passkey}
-            />
+      
 
             <InfoField 
                 title="Name"
@@ -67,7 +98,8 @@ class StaffDetailScreen extends Component {
             <MyButton
                 title="Edit Staff"
                 onPress={()=>{
-                    this.props.navigation.navigate('StaffEditScreen',this.props.route.params)
+                    // this.props.navigation.navigate('StaffEditScreen',this.props.route.params)
+                    this.props.navigation.navigate('StaffEditScreen',this.state)
                 }}
             />
 
