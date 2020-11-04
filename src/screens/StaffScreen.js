@@ -1,10 +1,21 @@
 import React, { Component } from 'react'
-import { View, Text, ActivityIndicator, FlatList } from 'react-native'
+import { View, Text, ActivityIndicator, FlatList,
+
+    RefreshControl
+
+} from 'react-native'
 
 import axios from 'axios'
 
 import BarButton from '../components/BarButton'
 import MyButton from '../components/MyButton'
+
+
+const wait = (timeout) => {
+    return new Promise(resolve => {
+      setTimeout(resolve, timeout);
+    });
+  }
 
 class StaffScreen extends Component {
 
@@ -34,6 +45,17 @@ class StaffScreen extends Component {
 
     componentDidMount(){
 
+      this.callAPI();        
+
+    }
+
+    callAPI(){
+
+        this.setState({
+            loading: true,
+        });
+
+
         axios.get('https://backend.sofebiz.com/superadmin/views').then((response)=>{
 
             console.log('res', response.data);
@@ -42,6 +64,8 @@ class StaffScreen extends Component {
                 staff_list: response.data,
                 loading:false,
             })
+
+            
 
         }).catch((e)=>{
 
@@ -53,6 +77,7 @@ class StaffScreen extends Component {
 
         })
 
+        
     }
 
 
@@ -68,17 +93,23 @@ class StaffScreen extends Component {
               }}
             />
 
-            {
+            {/* {
                 this.state.loading === true && 
                 <View style={{flexDirection:'row', flex:1, justifyContent:'center', padding:6, margin:12, alignItems:'center'}}>
                 <ActivityIndicator/>
                 <View style={{width:5}}></View>
                 <Text>Loading</Text>
                 </View>    
-            }   
+            }    */}
 
 
             <FlatList
+                refreshControl={
+                    <RefreshControl refreshing={this.state.loading} onRefresh={()=>{
+                        this.callAPI();
+                    }} 
+                    />
+                }
                 style={{flex:1}}
                 data={this.state.staff_list}
                 renderItem={({item, index}) => this.renderItem(item, index) }
