@@ -17,7 +17,7 @@ class StaffDetailScreen extends Component {
 
     render(){
 
-        let { name, email, gender, id, passkey, phone, status } = this.props.route.params;
+        let { name, email, gender, id, passkey, phone, status, coordinate } = this.props.route.params;
 
         return (
 
@@ -44,6 +44,11 @@ class StaffDetailScreen extends Component {
             <InfoField 
                 title="Status"
                 value={status}
+            />
+
+            <InfoField 
+                title="Coordinate"
+                value={coordinate}
             />
  
             

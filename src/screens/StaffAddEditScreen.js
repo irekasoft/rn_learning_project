@@ -73,28 +73,54 @@ class StaffAddEditScreen extends Component {
                />
 
 
-
-
-
                {/*  */}
 
                <MyButton
                 title="Create New Staff"
                 onPress={()=>{
 
-                    let params = {
-                        name: name,
-                        phone: phone_no,
-                        email: email,
-                        gender: gender, 
-                    }
-                    axios.post('https://backend.sofebiz.com/superadmin/create',params).then((response)=>{
-                        console.log('result', response)
-                    }).catch((e)=>{
-                        console.log('result', e)
-                    })
+                    // let params = {
+                    //     name: name,
+                    //     phone: phone_no,
+                    //     email: email,
+                    //     gender: gender,
+                    //     photo: 'photo',
+                    //     // passkey: '',
+                    //     coordinate: '123,123'
+                    // }
 
+                    // console.log('params', params);
 
+                    // axios.post('https://backend.sofebiz.com/superadmin/create',params).then((response)=>{
+                    //     console.log('result', response)
+                    // }).catch((e)=>{
+                    //     console.log('error', e)
+                    // })
+
+                    let bodyFormData = new FormData();
+                    bodyFormData.append('name', name );
+                    bodyFormData.append('phone', phone_no );
+                    bodyFormData.append('email', email );
+                    bodyFormData.append('gender', gender );
+                    bodyFormData.append('photo', 'photo');
+                    bodyFormData.append('coordinate', '123,123');
+
+                    console.log('bodyform', bodyFormData);
+
+                    axios({
+                        method: 'post',
+                        url: 'https://backend.sofebiz.com/superadmin/create',
+                        data: bodyFormData,
+                        headers: {'Content-Type': 'multipart/form-data' }
+                        })
+                        .then((response) => {
+                            //handle success
+                            console.log(response);
+                        })
+                        .catch((response) => {
+                            //handle error
+                            console.log(response);
+                        });
 
                 }}
                />
@@ -114,7 +140,7 @@ const styles = {
         borderRadius:6, 
         backgroundColor:'white', 
         borderColor:'grey', 
-        borderStyle:"sold", 
+        borderStyle:"solid", 
         borderWidth:1,
 
     }

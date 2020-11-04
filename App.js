@@ -21,7 +21,7 @@ function App() {
 
     <NavigationContainer>
       <Stack.Navigator 
-        initialRouteName="StaffAddEditScreen" // Prod: HomeScreen        
+        initialRouteName="StaffScreen" // Prod: HomeScreen        
       >        
 
         <Stack.Screen name="StaffScreen"

@@ -59,7 +59,7 @@ class StaffScreen extends Component {
     render(){
 
         return (
-            <View>
+            <View style={{flex:1}}>
             
             <MyButton 
               title="Add Staff"
@@ -79,6 +79,7 @@ class StaffScreen extends Component {
 
 
             <FlatList
+                style={{flex:1}}
                 data={this.state.staff_list}
                 renderItem={({item, index}) => this.renderItem(item, index) }
             />
