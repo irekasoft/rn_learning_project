@@ -8,7 +8,7 @@ class BarButton extends Component {
               onPress={this.props.onPress}
               activeOpacity={0.8}
           >
-            <View style={{flexDirection:'row', alignItems:'center', backgroundColor:"white", padding:6}}>
+            <View style={{flexDirection:'row', alignItems:'center', backgroundColor:"white", padding:12}}>
               <Image 
               style={{width:30,height:30, borderRadius:12}}
               source={require('../img/download.jpg')}/>

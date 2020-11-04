@@ -7,7 +7,7 @@ class MyButton extends Component {
         <TouchableOpacity 
         onPress={this.props.onPress}
         activeOpacity={0.8}
-        style={{justifyContent:"center", backgroundColor:"#2D2AD9", alignItems:"center", padding:6, margin:6, borderRadius:12}}>
+        style={{justifyContent:"center", backgroundColor:"#2D2AD9", alignItems:"center", padding:6, borderRadius:6, height:44}}>
 
         <Text style={{color:'white'}}>{this.props.title}</Text>
 

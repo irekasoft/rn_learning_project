@@ -4,6 +4,8 @@ import { View, Text, ScrollView } from 'react-native'
 
 import InfoField from '../components/InfoField'
 
+import MyButton from '../components/MyButton'
+
 class StaffDetailScreen extends Component {
 
     constructor(props){
@@ -50,7 +52,30 @@ class StaffDetailScreen extends Component {
                 title="Coordinate"
                 value={coordinate}
             />
+
+            {/*  */}
+
+            <View   
+                style={{height:30}}
+            ></View>
  
+            <MyButton
+                title="Edit Staff"
+                onPress={()=>{
+                    this.props.navigation.navigate('StaffEditScreen',this.props.route.params)
+                }}
+            />
+
+            <View   
+                style={{height:6}}
+            ></View>
+
+            <MyButton
+                title="Delete"
+                onPress={()=>{
+
+                }}
+            />
             
 
             </ScrollView>

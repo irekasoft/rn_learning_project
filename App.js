@@ -11,6 +11,8 @@ import StaffScreen from './src/screens/StaffScreen';
 import StaffDetailScreen from './src/screens/StaffDetailScreen';
 import StaffAddEditScreen from './src/screens/StaffAddEditScreen';
 
+import StaffEditScreen from './src/screens/StaffEditScreen';
+
 const Stack = createStackNavigator();
 
 function App() {
@@ -47,6 +49,15 @@ function App() {
           }}        
         >
           {props => <StaffAddEditScreen {...props} />}
+        </Stack.Screen>
+
+        <Stack.Screen 
+          name="StaffEditScreen"
+          options={{
+            title: 'Edit Staff',            
+          }}        
+        >
+          {props => <StaffEditScreen {...props} />}
         </Stack.Screen>
 
         <Stack.Screen name="HomeScreen">

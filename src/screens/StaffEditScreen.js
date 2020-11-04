@@ -10,14 +10,16 @@ class StaffAddEditScreen extends Component {
   constructor(props){
     super(props);
 
+    let { name, email, gender, id, passkey, phone, status, coordinate } = props.route.params;
+
     this.state = {
 
         loading: false,
 
-        name: '',
-        phone_no: '',
-        email: '',
-        gender: '',
+        name: name,
+        phone_no: phone,
+        email: email,
+        gender: gender,
     }
 
   }
@@ -106,7 +108,7 @@ class StaffAddEditScreen extends Component {
 
     return (
         <MyButton
-        title="Create New Staff"
+        title="Update Staff"
         onPress={()=>{
 
             this.setState({
@@ -143,7 +145,7 @@ class StaffAddEditScreen extends Component {
 
             axios({
                 method: 'post',
-                url: 'https://backend.sofebiz.com/superadmin/create',
+                url: 'https://backend.sofebiz.com/superadmin/update',
                 data: bodyFormData,
                 headers: {'Content-Type': 'multipart/form-data' }
                 })
@@ -151,7 +153,7 @@ class StaffAddEditScreen extends Component {
                 
                     //handle success
                     console.log('response',response);
-                    this.props.navigation.pop();
+                    
                 
                 })
                 .catch((response) => {

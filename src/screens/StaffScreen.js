@@ -45,6 +45,8 @@ class StaffScreen extends Component {
 
     componentDidMount(){
 
+    
+
       this.callAPI();        
 
     }
@@ -86,12 +88,14 @@ class StaffScreen extends Component {
         return (
             <View style={{flex:1}}>
             
+            <View style={{padding:12}}>            
             <MyButton 
               title="Add Staff"
               onPress={()=>{
                 this.props.navigation.navigate('StaffAddEditScreen')
               }}
             />
+            </View>
 
             {/* {
                 this.state.loading === true && 
