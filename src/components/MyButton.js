@@ -5,6 +5,7 @@ class MyButton extends Component {
    render() {
        return (
         <TouchableOpacity 
+        onPress={this.props.onPress}
         activeOpacity={0.8}
         style={{justifyContent:"center", backgroundColor:"#2D2AD9", alignItems:"center", padding:6, margin:6, borderRadius:12}}>
 

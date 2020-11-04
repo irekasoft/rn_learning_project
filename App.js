@@ -21,19 +21,31 @@ function App() {
 
     <NavigationContainer>
       <Stack.Navigator 
-        initialRouteName="StaffScreen" // Prod: HomeScreen
-        
+        initialRouteName="StaffAddEditScreen" // Prod: HomeScreen        
       >        
 
-        <Stack.Screen name="StaffScreen">
+        <Stack.Screen name="StaffScreen"
+          options={{
+            title: 'Staff',            
+          }} 
+        >
           {props => <StaffScreen {...props} />}
         </Stack.Screen>
 
-        <Stack.Screen name="StaffDetailScreen">
+        <Stack.Screen name="StaffDetailScreen"
+          options={{
+            title: 'Staff Details',            
+          }} 
+        >
           {props => <StaffDetailScreen {...props} />}
         </Stack.Screen>
 
-        <Stack.Screen name="StaffAddEditScreen">
+        <Stack.Screen 
+          name="StaffAddEditScreen"
+          options={{
+            title: 'Add New Staff',            
+          }}        
+        >
           {props => <StaffAddEditScreen {...props} />}
         </Stack.Screen>
 

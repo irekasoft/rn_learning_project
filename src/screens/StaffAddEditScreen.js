@@ -1,22 +1,19 @@
 import React, { Component } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, TextInput, ScrollView } from 'react-native'
 
 class StaffAddEditScreen extends Component {
    render() {
        return (
-           <View style={styles.container}>
+           <ScrollView >
+
+
                <Text>StaffAddEditScreen</Text>
-           </View>
+               
+           </ScrollView>
        );
    }
 }
 
-const styles = {
-   container: {
-       flex: 1,
-       justifyContent: 'center',
-       alignItems: 'center',
-   },
-};
+
 
 export default StaffAddEditScreen;

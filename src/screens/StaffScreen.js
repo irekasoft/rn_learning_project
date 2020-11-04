@@ -61,6 +61,13 @@ class StaffScreen extends Component {
         return (
             <View>
             
+            <MyButton 
+              title="Add Staff"
+              onPress={()=>{
+                this.props.navigation.navigate('StaffAddEditScreen')
+              }}
+            />
+
             {
                 this.state.loading === true && 
                 <View style={{flexDirection:'row', flex:1, justifyContent:'center', padding:6, margin:12, alignItems:'center'}}>
@@ -69,8 +76,6 @@ class StaffScreen extends Component {
                 <Text>Loading</Text>
                 </View>    
             }   
-
-            <MyButton title="Add Staff"/>
 
 
             <FlatList
