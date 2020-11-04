@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { View, Text, ScrollView } from 'react-native'
+import { View, Text, ScrollView, Alert } from 'react-native'
 
 import InfoField from '../components/InfoField'
 
@@ -15,6 +15,8 @@ class StaffDetailScreen extends Component {
 
         this.state = {
             passkey: props.route.params.passkey,
+            loading: false,
+            deleting: false,
         }
 
     }
@@ -54,11 +56,59 @@ class StaffDetailScreen extends Component {
 
     }
 
+    deleteStaff(){
+
+      this.setState({
+        deleting: true,
+      })
+
+      let bodyFormData = new FormData();
+      bodyFormData.append('passkey', this.state.passkey);
+
+      console.log('bodyform', bodyFormData);
+
+      axios({
+          method: 'post',
+          url: 'https://backend.sofebiz.com/superadmin/delete',
+          data: bodyFormData,
+          headers: {'Content-Type': 'multipart/form-data' }
+          })
+          .then((response) => {
+          
+              //handle success
+              console.log('response',response);
+              this.props.navigation.pop();              
+          
+          })
+          .catch((response) => {
+              
+              //handle error
+              console.log(response);
+
+          });
+
+
+
+    }
+
+
+    ////////////
+    // RENDER
     render(){
 
         // let { name, email, gender, id, passkey, phone, status, coordinate,  } = this.props.route.params;
 
         let { name, email, gender, id, passkey, phone, status, coordinate,  } = this.state;
+
+        if (this.state.deleting === true){
+
+          return (
+            <View style={{flex: 1, justifyContent:'center', alignItems:"center"}}>
+              <Text>Deleting...</Text>
+            </View>
+          )
+
+        }
 
         return (
 
@@ -97,6 +147,7 @@ class StaffDetailScreen extends Component {
  
             <MyButton
                 title="Edit Staff"
+                
                 onPress={()=>{
                     // this.props.navigation.navigate('StaffEditScreen',this.props.route.params)
                     this.props.navigation.navigate('StaffEditScreen',this.state)
@@ -104,12 +155,39 @@ class StaffDetailScreen extends Component {
             />
 
             <View   
-                style={{height:6}}
+                style={{height:12}}
             ></View>
 
             <MyButton
                 title="Delete"
+
+                backgroundColor="red"
                 onPress={()=>{
+
+                  Alert.alert(
+                    "Are you sure want to delete this staff?",
+                    null,
+                    [
+                      {
+                        text: "No",
+                        onPress: () => { 
+                          console.log("Cancel Pressed")
+                        },
+                        style: "cancel"
+                      },
+                      { 
+                        text: "Delete", 
+                        onPress: () => { 
+                          console.log("OK Pressed")
+
+                          this.deleteStaff();
+
+                        },
+                        style: 'destructive'
+                     }
+                    ],
+                    { cancelable: false }
+                  );
 
                 }}
             />
