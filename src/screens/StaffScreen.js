@@ -10,12 +10,19 @@ import axios from 'axios'
 import BarButton from '../components/BarButton'
 import MyButton from '../components/MyButton'
 
+import _ from 'lodash'
 
 const wait = (timeout) => {
     return new Promise(resolve => {
       setTimeout(resolve, timeout);
     });
   }
+
+  const arr = [
+    { firstName: 'Will', lastName: 'Riker', rank: 'Commander' },
+    { firstName: 'Beverly', lastName: 'Crusher', rank: 'Commander' },
+    { firstName: 'Wesley', lastName: 'Crusher', rank: 'Ensign' }
+  ];
 
 class StaffScreen extends Component {
 
@@ -43,13 +50,25 @@ class StaffScreen extends Component {
 
     }
 
+    
+
     componentDidMount(){
 
       this.subs = [
           this.props.navigation.addListener('focus', ()=> { this.callAPI() })
       ]
 
-      this.callAPI();        
+      this.callAPI();     
+      
+      
+      // Test data
+
+    //   let filteredArray = _.filter(arr, { firstName: '' });
+
+    //   let filteredArray = arr;
+
+    //   console.log('hi', filteredArray);
+
 
     }
 
@@ -62,7 +81,7 @@ class StaffScreen extends Component {
 
         axios.get('https://backend.sofebiz.com/superadmin/views').then((response)=>{
 
-            console.log('res', response.data);
+            // console.log('res', response.data);
 
             this.setState({
                 staff_list: response.data,
@@ -73,7 +92,7 @@ class StaffScreen extends Component {
 
         }).catch((e)=>{
 
-            console.log('error', e);
+            // console.log('error', e);
 
             this.setState({                
                 loading:false,

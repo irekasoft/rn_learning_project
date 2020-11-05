@@ -112,9 +112,7 @@ class StaffDetailScreen extends Component {
 
         return (
 
-            <ScrollView style={{padding:12}}>
-            
-      
+            <ScrollView style={{padding:12}}>      
 
             <InfoField 
                 title="Name"

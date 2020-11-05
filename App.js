@@ -12,6 +12,7 @@ import StaffDetailScreen from './src/screens/StaffDetailScreen';
 import StaffAddEditScreen from './src/screens/StaffAddEditScreen';
 
 import StaffEditScreen from './src/screens/StaffEditScreen';
+import GeolocationScreen from './src/screens/GeolocationScreen';
 
 const Stack = createStackNavigator();
 
@@ -23,7 +24,7 @@ function App() {
 
     <NavigationContainer>
       <Stack.Navigator 
-        initialRouteName="StaffScreen" // Prod: HomeScreen        
+        initialRouteName="GeolocationScreen" // Prod: HomeScreen        
       >        
 
         <Stack.Screen name="StaffScreen"
@@ -66,6 +67,10 @@ function App() {
 
         <Stack.Screen name="SecondScreen">
           {props => <SecondScreen {...props} />}
+        </Stack.Screen>
+
+        <Stack.Screen name="GeolocationScreen">
+          {props => <GeolocationScreen {...props} />}
         </Stack.Screen>
 
       </Stack.Navigator>
