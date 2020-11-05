@@ -76,7 +76,7 @@ class GeolocationScreen extends Component {
     return (
            <View style={styles.container}>
                <Text>{text}</Text>
-               <Text style={{fontSize:40}}>Take 15</Text>
+               <Text style={{fontSize:40}}></Text>
            </View>
        );
    }
