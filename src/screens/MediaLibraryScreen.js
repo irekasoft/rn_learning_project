@@ -5,6 +5,10 @@ import * as MediaLibrary from 'expo-media-library'
 
 import * as ImagePicker from 'expo-image-picker';
 
+import OptionsMenu from "react-native-options-menu";
+
+import MyButton from '../components/MyButton'
+
 class MediaLibraryScreen extends Component {
 
     constructor(props){
@@ -28,7 +32,7 @@ class MediaLibraryScreen extends Component {
 
     //   Buka image gallery
 
-    openImagePickerAsync = async () => {
+    openImagePickerAsync = async (type) => {
 
         let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
     
@@ -36,10 +40,16 @@ class MediaLibraryScreen extends Component {
           alert("Permission to access camera roll is required!");
           return;
         }
-    
-        // let pickerResult = await ImagePicker.launchImageLibraryAsync();
 
-        let pickerResult = await ImagePicker.launchCameraAsync();
+        let pickerResult = null;
+    
+        if (type === 'gallery'){
+            pickerResult = await ImagePicker.launchImageLibraryAsync();
+        }else if (type === 'camera'){
+            pickerResult = await ImagePicker.launchCameraAsync();
+        }
+
+        // let pickerResult = await ImagePicker.launchImageLibraryAsync();        
 
         console.log(pickerResult);
 
@@ -52,7 +62,6 @@ class MediaLibraryScreen extends Component {
                 localUri: pickerResult.uri,
             }
         })
-
 
     }  
 
@@ -72,9 +81,23 @@ class MediaLibraryScreen extends Component {
 
         return (
             <View style={styles.container}>
+                <OptionsMenu
+                    customButton={<Text style={{color:'blue'}}>Select Picture</Text>}
+                    
+                    options={[
+                        "Take From Gallery", 
+                        "Take Picture", 
+                        "Cancel"
+                    ]}
+                    actions={[
+                        ()=>{ this.openImagePickerAsync('gallery') },
+                        ()=>{ this.openImagePickerAsync('camera') },
+                        ()=>{},
+                    ]
+                    }/>
                 <Text>MediaLibraryScreen</Text>
                 <Button
-                onPress={this.openImagePickerAsync}
+                onPress={()=>{this.openImagePickerAsync('gallery') }}
                 title="Do MediaLibrary Stuff"
                 />
             </View>
