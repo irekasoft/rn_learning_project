@@ -37,7 +37,9 @@ class MediaLibraryScreen extends Component {
           return;
         }
     
-        let pickerResult = await ImagePicker.launchImageLibraryAsync();
+        // let pickerResult = await ImagePicker.launchImageLibraryAsync();
+
+        let pickerResult = await ImagePicker.launchCameraAsync();
 
         console.log(pickerResult);
 
