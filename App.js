@@ -16,6 +16,7 @@ import GeolocationScreen from './src/screens/GeolocationScreen';
 import CameraScreen from './src/screens/CameraScreen';
 
 import BarCodeScannerScreen from './src/screens/BarCodeScannerScreen';
+import MediaLibraryScreen from './src/screens/MediaLibraryScreen';
 
 const Stack = createStackNavigator();
 
@@ -24,7 +25,7 @@ function App() {
     
     <NavigationContainer>
       <Stack.Navigator 
-        initialRouteName="BarCodeScannerScreen" // Prod: HomeScreen        
+        initialRouteName="MediaLibraryScreen" // Prod: HomeScreen        
       >        
 
         <Stack.Screen name="StaffScreen"
@@ -79,6 +80,10 @@ function App() {
 
         <Stack.Screen name="BarCodeScannerScreen">
           {props => <BarCodeScannerScreen {...props} />}
+        </Stack.Screen>
+
+        <Stack.Screen name="MediaLibraryScreen">
+          {props => <MediaLibraryScreen {...props} />}
         </Stack.Screen>
 
 
