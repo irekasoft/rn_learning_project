@@ -57,15 +57,52 @@ class MediaLibraryScreen extends Component {
             return;
         }
 
+        // let localUri = result.uri;
+
         this.setState({
             selectedImage: {
                 localUri: pickerResult.uri,
-            }
+            },
+            localUri: pickerResult.uri,
         })
 
     }  
 
 
+
+    uploadToServer = async () =>{
+
+        let localUri = this.state.localUri;
+        let filename = localUri.split('/').pop();        
+
+        let match = /\.(\w+)$/.exec(filename);
+        let type = match ? `image/${match[1]}` : `image`;
+      
+        let formData = new FormData();
+        formData.append('photo', { uri: localUri, name: filename, type });
+
+        console.log('uploading', formData);
+      
+        fetch('http://example.com/upload.php', {
+          method: 'POST',
+          body: formData,
+          header: {
+            'content-type': 'multipart/form-data',
+          },
+        }).then((response)=>{
+
+            console.log('hi',response);
+
+        }).catch(e=>{
+
+            console.log('error',e);
+
+        });
+
+    }
+
+    /////////////////////////
+   //
    render() {
 
     if (this.state.selectedImage !== null) {
@@ -75,6 +112,13 @@ class MediaLibraryScreen extends Component {
               source={{ uri: this.state.selectedImage.localUri }}
               style={styles.thumbnail}
             />
+            <MyButton 
+                title="Upload to Server" 
+                onPress={()=>{
+                    this.uploadToServer()
+                }}
+            />
+            
           </View>
         );
       }
@@ -99,7 +143,7 @@ class MediaLibraryScreen extends Component {
                 <Button
                 onPress={()=>{this.openImagePickerAsync('gallery') }}
                 title="Do MediaLibrary Stuff"
-                />
+              />
             </View>
         );
 
