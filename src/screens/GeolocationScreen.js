@@ -16,9 +16,11 @@ class GeolocationScreen extends Component {
 
    async componentDidMount(){
 
+    
+
     Location.requestPermissionsAsync().then(({status})=>{
 
-        // console.log('status', mylocation);
+        console.log('status', status);
 
         if ( status !== 'granted' ){
 
@@ -36,6 +38,8 @@ class GeolocationScreen extends Component {
 
         }).catch(e=>{
 
+            console.log('hi',e)
+
             this.setState({
                 errorMsg: 'Something wrong with GPS'
             })
@@ -48,12 +52,10 @@ class GeolocationScreen extends Component {
         console.log('e', e);
 
         this.setState({
-            errorMsg: 'Something with GPS permission'
+            errorMsg: 'Something wrong with GPS permission'
         })
 
     });
-
-    let status;   
 
 
    }
@@ -74,6 +76,7 @@ class GeolocationScreen extends Component {
     return (
            <View style={styles.container}>
                <Text>{text}</Text>
+               <Text style={{fontSize:40}}>Take 15</Text>
            </View>
        );
    }
