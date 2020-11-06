@@ -5,6 +5,8 @@ import { View, Text, SafeAreaView, ScrollView, TextInput,
 
 import BarButton from '../components/BarButton'
 
+import FAB from 'react-native-fab'
+
 const rows = [
     {
       title:'Apa',
@@ -45,8 +47,9 @@ class HomeScreen extends Component {
                flexDirection:'column',
                justifyContent:'center',
                backgroundColor:'#C4C4C4'
-             }}>                          
+             }}>          
 
+             
               {/* Content Below */}
                <ScrollView style={{
                    flex:1,
@@ -113,12 +116,13 @@ class HomeScreen extends Component {
                     })
                 }
                 
-                
 
                </ScrollView>
 
 
            </View>
+           <FAB buttonColor="red" iconTextColor="#FFFFFF" onClickAction={() => {console.log("FAB pressed")}} visible={true} iconTextComponent={<Text>A</Text>} />                
+
            <View style={{padding:3}}>
             <Text style={{textAlign:"center"}}>App</Text>
            </View>

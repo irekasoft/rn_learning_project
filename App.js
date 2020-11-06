@@ -18,6 +18,8 @@ import CameraScreen from './src/screens/CameraScreen';
 import BarCodeScannerScreen from './src/screens/BarCodeScannerScreen';
 import MediaLibraryScreen from './src/screens/MediaLibraryScreen';
 
+import HomeMenuScreen from './src/screens/HomeMenuScreen'
+
 const Stack = createStackNavigator();
 
 function App() {
@@ -25,8 +27,16 @@ function App() {
     
     <NavigationContainer>
       <Stack.Navigator 
-        initialRouteName="MediaLibraryScreen" // Prod: HomeScreen        
+        initialRouteName="HomeMenuScreen" // Prod: HomeScreen        
       >        
+
+        <Stack.Screen name="HomeMenuScreen"
+          options={{
+            title: 'Home',            
+          }} 
+        >
+          {props => <HomeMenuScreen {...props} />}
+        </Stack.Screen>
 
         <Stack.Screen name="StaffScreen"
           options={{
