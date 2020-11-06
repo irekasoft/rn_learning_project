@@ -120,13 +120,15 @@ class StaffDetailScreen extends Component {
             />
 
             <InfoField 
-                title="Email"
-                value={name}
-            />
-            <InfoField 
                 title="Phone"
                 value={phone}
             />
+
+            <InfoField 
+                title="Email"
+                value={email}
+            />
+           
             <InfoField 
                 title="Status"
                 value={status}
